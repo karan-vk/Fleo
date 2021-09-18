@@ -13,13 +13,15 @@ generator client {
 }
 
 model Node {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   CompanyName String
   progress    Decimal
   TotalSales  Decimal
   TargetSales Decimal
-  isParent    Boolean @default(false)
-  children    Node[]  @relation("NodeToNode")
-  Node        Node[]  @relation("NodeToNode", fields: [nodeId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  isParent    Boolean  @default(false)
+  children    Node[]   @relation("NodeToNode")
+  Node        Node[]   @relation("NodeToNode", fields: [nodeId], references: [id], onDelete: Cascade)
   nodeId      String?
 }

@@ -18,7 +18,7 @@ company.post('/', async (req, res) => {
     return res.status(201).json(resp);
 })
 
-company.put("/:id", async (req, res) => {
+company.post("/:id", async (req, res) => {
     try {
         const validate = await companyNodeAdd.validateAsync(req.body);
     } catch (error) {
@@ -60,7 +60,7 @@ company.get("/:id", async (req, res) => {
 
 })
 
-company.put("/update/:id", async (req, res) => {
+company.put("/:id", async (req, res) => {
     const { id } = req.params;
     try {
         const validate = await idCheck.validateAsync(id);
