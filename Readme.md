@@ -2,6 +2,12 @@
 
 ## Backend for the Fleo Hackathon
 
+## Setup 
+- configure the database and redis by creating env file similar to ```.env.example```
+- run ```npm install``` 
+- run ```npm run start```
+
+
 ### Create
 To create a parent company
 
