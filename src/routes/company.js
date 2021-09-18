@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { CreateCompany, CreateCompanyChild, DeleteCompany, GetCompany, UpdateCompany } = require("../service/company");
-const { companyCreate, companyNodeAdd, idCheck, } = require("../utils/validation");
+const { companyCreate, companyNodeAdd, idCheck, companyUpdate } = require("../utils/validation");
 
 
 const company = Router();
@@ -64,6 +64,7 @@ company.put("/update/:id", async (req, res) => {
     const { id } = req.params;
     try {
         const validate = await idCheck.validateAsync(id);
+        const validateUpdate = await companyUpdate.validateAsync(req.body);
     } catch (error) {
         return res.status(400).json({
             message: error.message

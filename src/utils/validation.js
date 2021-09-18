@@ -17,10 +17,17 @@ const companyNodeAdd = Joi.object({
 })
 
 const idCheck = Joi.string().alphanum().min(3).max(50).required()
+const companyUpdate = Joi.object({
+    CompanyName: Joi.string().alphanum().min(3).max(50),
+    TargetSales: Joi.number().min(0),
+    TotalSales: Joi.number().min(0),
+    progress: Joi.number().min(0).max(100),
 
+})
 
 module.exports = {
     companyCreate,
     companyNodeAdd,
     idCheck,
+    companyUpdate
 }
