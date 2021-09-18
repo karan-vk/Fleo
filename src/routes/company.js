@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const cache = require("../lib/redis");
 const { CreateCompany, CreateCompanyChild, DeleteCompany, GetCompany, UpdateCompany } = require("../service/company");
 const { companyCreate, companyNodeAdd, idCheck, companyUpdate } = require("../utils/validation");
 
@@ -46,7 +47,7 @@ company.delete("/:id", async (req, res) => {
     }
 })
 
-company.get("/:id", async (req, res) => {
+company.get("/:id", cache.route(5), async (req, res) => {
     const { id } = req.params;
     try {
         const validate = await idCheck.validateAsync(id);
